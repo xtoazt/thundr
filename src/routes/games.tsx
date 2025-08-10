@@ -20,8 +20,14 @@ type Game = {
 };
 
 const getList = async (): Promise<Game[]> => {
-  const res = await fetch("/cdn/list");
-  return await res.json();
+  try {
+    const res = await fetch("/api/cdn/list");
+    const ct = res.headers.get("content-type") || "";
+    if (!res.ok || !ct.includes("application/json")) return [];
+    return await res.json();
+  } catch {
+    return [];
+  }
 };
 
 export const Route = createFileRoute("/games")({
