@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import GridPattern from "../ui/grid-pattern";
+import Particles from "../ui/particles";
 import { cn } from "@/lib/utils";
 const OnBoarding = () => {
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -45,6 +46,7 @@ const OnBoarding = () => {
           `[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fixed inset-0 z-0 opacity-40`
         )}
       />
+      <Particles baseCount={100} opacity={0.4} link className="z-0" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -53,12 +55,12 @@ const OnBoarding = () => {
         className="w-full max-w-3xl p-4"
       >
         <Card className="border-border/30 bg-card/80 backdrop-blur-xl shadow-lg rounded-xl overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-primary/10 to-transparent pb-6">
-            <CardTitle className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-              Welcome to Emerald
+          <CardHeader className="bg-gradient-to-r from-blue-400/10 via-purple-500/10 to-pink-500/10 pb-6">
+            <CardTitle className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+              Welcome to thundr.
             </CardTitle>
             <CardDescription className="text-lg">
-              Choose how you'd like to experience Emerald
+              Choose how you'd like to experience thundr.
             </CardDescription>
           </CardHeader>
 

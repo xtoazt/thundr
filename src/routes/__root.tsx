@@ -29,7 +29,7 @@ function RenderComponent() {
     const message = urlParams.get("m");
     console.log(message);
     if (message === `u${VERSION}`) {
-      toast.success(`Updated Emerald to version ${VERSION}`);
+      toast.success(`Updated thundr. to version ${VERSION}`);
       urlParams.delete("m");
       window.history.replaceState({}, document.title, window.location.pathname);
     }

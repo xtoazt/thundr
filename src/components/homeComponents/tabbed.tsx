@@ -15,6 +15,7 @@ import {
 import { Checkbox } from "../ui/checkbox";
 import { cn } from "@/lib/utils";
 import GridPattern from "../ui/grid-pattern";
+import Particles from "../ui/particles";
 import { Input } from "../ui/input";
 import { useSettings } from "@/store";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
@@ -140,7 +141,7 @@ const SettingsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <h1 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+            <h1 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
               Settings
             </h1>
           </motion.div>
@@ -169,13 +170,13 @@ const SettingsPage = () => {
                   className="space-y-6 absolute top-0 left-0 w-full data-[state=inactive]:hidden data-[state=inactive]:pointer-events-none"
                 >
                   <Card className="border-border/30 bg-card/80 backdrop-blur-xl shadow-lg rounded-xl overflow-hidden">
-                    <CardHeader className="bg-gradient-to-r from-primary/10 to-transparent pb-6">
+                   <CardHeader className="bg-gradient-to-r from-blue-400/10 via-purple-500/10 to-pink-500/10 pb-6">
                       <CardTitle className="text-xl flex items-center gap-2">
                         <Settings className="h-5 w-5 text-primary" />
                         Appearance
                       </CardTitle>
                       <CardDescription>
-                        Customize how Emerald looks
+                        Customize how thundr. looks
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-8 pt-6">
@@ -245,7 +246,7 @@ const SettingsPage = () => {
                           </SelectContent>
                         </Select>
                         <p className="text-sm text-muted-foreground mt-2 ml-8">
-                          The main look of Emerald that YOU can change
+                          The main look of thundr. that YOU can change
                         </p>
                       </div>
 
@@ -277,7 +278,7 @@ const SettingsPage = () => {
                           </SelectContent>
                         </Select>
                         <p className="text-sm text-muted-foreground mt-2 ml-8">
-                          Hide Emerald using cloaking methods
+                          Hide thundr. using cloaking methods
                         </p>
                       </div>
                     </CardContent>
@@ -290,9 +291,9 @@ const SettingsPage = () => {
                 className="space-y-6 absolute top-0 left-0 w-full data-[state=inactive]:hidden data-[state=inactive]:pointer-events-none"
               >
                 <Card className="border-border/30 bg-card/80 backdrop-blur-xl shadow-lg rounded-xl overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-green-500/10 to-transparent pb-6">
+                   <CardHeader className="bg-gradient-to-r from-blue-400/10 via-purple-500/10 to-pink-500/10 pb-6">
                     <CardTitle className="text-xl flex items-center gap-2">
-                      <Search className="h-5 w-5 text-green-500" />
+                      <Search className="h-5 w-5 text-purple-400" />
                       Search Engine
                     </CardTitle>
                     <CardDescription>
@@ -302,7 +303,7 @@ const SettingsPage = () => {
                   <CardContent className="space-y-8 pt-6">
                     <div>
                       <h3 className="text-lg font-medium mb-3 flex items-center gap-2">
-                        <span className="h-6 w-6 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">
+                        <span className="h-6 w-6 rounded-full bg-purple-400/10 flex items-center justify-center text-purple-400">
                           1
                         </span>
                         Search Engine Name
@@ -315,7 +316,7 @@ const SettingsPage = () => {
                             settingsStore.searchEngine.url
                           );
                         }}
-                        className="max-w-md bg-background/50 border-border/30 focus-visible:ring-green-500/30 focus-visible:border-green-500/50 transition-all"
+                        className="max-w-md bg-background/50 border-border/30 focus-visible:ring-purple-400/30 focus-visible:border-purple-400/50 transition-all"
                         placeholder="Google"
                       />
                       <p className="text-sm text-muted-foreground mt-2 ml-8">
@@ -327,7 +328,7 @@ const SettingsPage = () => {
 
                     <div>
                       <h3 className="text-lg font-medium mb-3 flex items-center gap-2">
-                        <span className="h-6 w-6 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">
+                        <span className="h-6 w-6 rounded-full bg-purple-400/10 flex items-center justify-center text-purple-400">
                           2
                         </span>
                         Search URL
@@ -340,7 +341,7 @@ const SettingsPage = () => {
                             e.target.value
                           );
                         }}
-                        className="max-w-md bg-background/50 border-border/30 focus-visible:ring-green-500/30 focus-visible:border-green-500/50 transition-all"
+                        className="max-w-md bg-background/50 border-border/30 focus-visible:ring-purple-400/30 focus-visible:border-purple-400/50 transition-all"
                         placeholder="https://www.google.com/search?q="
                       />
                       <p className="text-sm text-muted-foreground mt-2 ml-8">
@@ -353,7 +354,7 @@ const SettingsPage = () => {
 
                     <div>
                       <h3 className="text-lg font-medium mb-3 flex items-center gap-2">
-                        <span className="h-6 w-6 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">
+                        <span className="h-6 w-6 rounded-full bg-purple-400/10 flex items-center justify-center text-purple-400">
                           3
                         </span>
                         Preset Search Engines
@@ -494,7 +495,7 @@ const SettingsPage = () => {
                   <CardContent className="space-y-8 pt-6">
                     <div>
                       <h3 className="text-lg font-medium mb-3 flex items-center gap-2">
-                        <span className="h-6 w-6 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">
+                        <span className="h-6 w-6 rounded-full bg-purple-400/10 flex items-center justify-center text-purple-400">
                           1
                         </span>
                         Choose your <Obfuscate text="Proxy" />
@@ -627,12 +628,12 @@ const SettingsPage = () => {
                         <path d="M12 16v-4"></path>
                         <path d="M12 8h.01"></path>
                       </svg>
-                      About Emerald
+                      About thundr.
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-8 pt-6">
                     <div className="flex flex-col items-center justify-center py-6">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center mb-4 shadow-lg">
+                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center mb-4 shadow-lg">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -649,7 +650,7 @@ const SettingsPage = () => {
                         </svg>
                       </div>
                       <h3 className="text-2xl font-bold mb-2">
-                        Emerald Modern
+                         thundr.
                       </h3>
                       <p className="text-sm text-muted-foreground mb-4">
                         Version {VERSION}
@@ -1258,7 +1259,7 @@ const TabbedHome = () => {
                 />
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-start pt-20 bg-gradient-to-b from-background to-background/80 overflow-auto">
-                  <GridPattern
+      <GridPattern
                     width={40}
                     height={40}
                     x={-1}
@@ -1268,6 +1269,7 @@ const TabbedHome = () => {
                       `[mask-image:radial-gradient(1000px_circle_at_center,white,transparent)] absolute inset-0 z-0 opacity-30`
                     )}
                   />
+      <Particles baseCount={120} opacity={0.35} link className="z-0" />
                   <div className="z-10 text-center max-w-4xl w-full px-6 flex flex-col items-center">
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
@@ -1275,8 +1277,8 @@ const TabbedHome = () => {
                       transition={{ duration: 0.4 }}
                       className="mb-10"
                     >
-                      <h2 className="text-6xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
-                        Emerald
+                      <h2 className="text-6xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+                        thundr.
                       </h2>
                       <p className="text-muted-foreground text-md">
                         Your secure gateway to the web

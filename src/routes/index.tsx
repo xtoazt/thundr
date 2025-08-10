@@ -4,6 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import ReactGA from "react-ga4";
 import { lazy, useEffect, useState } from "react";
 import GridPattern from "@/components/ui/grid-pattern";
+import Particles from "@/components/ui/particles";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -67,7 +68,7 @@ function Home() {
     ReactGA.initialize("G-PBTEBTLRLZ");
     ReactGA.event("page_view", {
       page_location: window.location.href,
-      page_title: "Emerald",
+      page_title: "thundr.",
       user_agent: navigator.userAgent ?? "no-ua",
     });
   }, []);
@@ -81,7 +82,7 @@ function Home() {
           <AlertDialogHeader>
             <AlertDialogTitle>Share the Website!</AlertDialogTitle>
             <AlertDialogDescription>
-              Not only does this help motivate me to continue working on emerald
+              Not only does this help motivate me to continue working on thundr.
               but it lets your friends in on the fun! If you're scared about the
               link being blocked we have plenty of more in the{" "}
               <Obfuscate text="discord" />!
@@ -147,6 +148,7 @@ const Loading: React.FC = () => {
           `[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fixed inset-0 z-0 opacity-40`
         )}
       />
+      <Particles baseCount={110} opacity={0.35} link className="z-0" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -155,9 +157,9 @@ const Loading: React.FC = () => {
         className="w-full max-w-3xl p-4"
       >
         <Card className="border-border/30 bg-card/80 backdrop-blur-xl shadow-lg rounded-xl overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-primary/10 to-transparent pb-6">
-            <CardTitle className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-              Welcome to Emerald
+          <CardHeader className="bg-gradient-to-r from-blue-400/10 via-purple-500/10 to-pink-500/10 pb-6">
+            <CardTitle className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+              Welcome to thundr.
             </CardTitle>
             <CardDescription className="text-lg">
               Please wait while we prepare the website

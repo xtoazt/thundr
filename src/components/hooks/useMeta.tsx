@@ -4,7 +4,7 @@ export const useMeta = (title: string, icon: string) => {
   const settings = useSettings();
   useEffect(() => {
     if (title === "") {
-      settings.setTitle("Emerald");
+      settings.setTitle("thundr.");
     }
     if (icon === "") {
       settings.setIcon("/emerald.png");

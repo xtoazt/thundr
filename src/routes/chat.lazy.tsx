@@ -1,5 +1,6 @@
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import GridPattern from "@/components/ui/grid-pattern";
+import Particles from "@/components/ui/particles";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -129,6 +130,7 @@ function RouteComponent() {
           `[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fixed inset-0 z-0 opacity-40`
         )}
       />
+      <Particles baseCount={120} opacity={0.35} link className="z-0" />
 
       {/* Welcome message when no messages */}
       {messages.length === 0 && (
@@ -139,8 +141,8 @@ function RouteComponent() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-md px-6"
           >
-            <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-              Emerald AI
+            <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+              thundr. AI
             </h1>
             <p className="text-muted-foreground">
               Ask me anything and I'll do my best to help you.

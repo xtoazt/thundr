@@ -23,7 +23,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY,
   defaultHeaders: {
     "HTTP-Referer": "https://delusionz.xyz", // Optional. Site URL for rankings on openrouter.ai.
-    "X-Title": "Emerald", // Optional. Site title for rankings on openrouter.ai.
+    "X-Title": "thundr.", // Optional. Site title for rankings on openrouter.ai.
   },
 });
 

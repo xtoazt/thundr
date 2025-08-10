@@ -13,6 +13,9 @@ import { Route } from "@/routes/index";
 import { useMeta } from "../hooks/useMeta";
 import { AnimatePresence, motion } from "framer-motion";
 import GridPattern from "../ui/grid-pattern";
+import Particles from "../ui/particles";
+import TiltCard from "../ui/tilt-card";
+import { ShineButton } from "../ui/shine-button";
 import PopularSites from "../../sites.json";
 
 import {
@@ -204,6 +207,9 @@ const DefaultHome = () => {
           }`
         )}
       />
+      {!shouldOpen && (
+        <Particles baseCount={140} opacity={0.45} link className="z-0" />
+      )}
       <iframe
         src=""
         ref={frame}
@@ -219,91 +225,95 @@ const DefaultHome = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="select-none font-display text-center text-5xl sm:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70 font-semibold md:text-7xl md:leading-[5rem]"
+            className="select-none font-display text-center text-5xl sm:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 font-semibold md:text-7xl md:leading-[5rem]"
           >
-            Emerald
+            thundr.
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="sm:w-3/12 w-11/12 relative rounded-2xl focus:border-primary border border-input/30 bg-card/20 backdrop-blur-md shadow-lg flex space-x-2 items-center justify-center pr-2 hover:shadow-xl transition-all"
+            className="sm:w-3/12 w-11/12 relative"
           >
-            <Input
-              className="text-white/80 sm:w-[95%] w-full rounded-2xl focus-visible:ring-0 border-none bg-transparent"
-              placeholder={`Using ${settingStore.searchEngine.name} as search engine and ${settingStore.proxy} as proxy`}
-              value={term}
-              onChange={(e) => setTerm(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleSearch(term);
-                }
-              }}
-            />
-            <DropdownMenu>
-              <DropdownMenuTrigger className="focus:ring-0 outline-none">
-                <div className="min-h-8 hover:scale-110 transition-transform">
-                  {["DuckDuckgo", "Google", "brave"].includes(
-                    settingStore.searchEngine.name
-                  ) ? (
-                    <img
-                      src={`/searchEngines/${settingStore.searchEngine.name}.png`}
-                      alt={`${settingStore.searchEngine.name} search Engine`}
-                      className="h-8"
-                    />
-                  ) : (
-                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Search className="h-6 w-6 text-primary" />
+            <TiltCard className="rounded-2xl bg-card/20 backdrop-blur-md border border-input/30 shadow-lg hover:shadow-2xl">
+              <div className="flex items-center justify-center space-x-2 pr-2 p-1.5">
+                <Input
+                  className="text-white/80 sm:w-[95%] w-full rounded-2xl focus-visible:ring-0 border-none bg-transparent"
+                  placeholder={`Using ${settingStore.searchEngine.name} as search engine and ${settingStore.proxy} as proxy`}
+                  value={term}
+                  onChange={(e) => setTerm(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearch(term);
+                    }
+                  }}
+                />
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="focus:ring-0 outline-none">
+                    <div className="min-h-8 hover:scale-110 transition-transform">
+                      {["DuckDuckgo", "Google", "brave"].includes(
+                        settingStore.searchEngine.name
+                      ) ? (
+                        <img
+                          src={`/searchEngines/${settingStore.searchEngine.name}.png`}
+                          alt={`${settingStore.searchEngine.name} search Engine`}
+                          className="h-8"
+                        />
+                      ) : (
+                        <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Search className="h-6 w-6 text-primary" />
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="rounded-2xl p-2 flex items-center justify-center flex-col w-fit bg-card/80 backdrop-blur-md border-primary/10">
-                <DropdownMenuItem
-                  className={`rounded-2xl w-fit flex space-x-2 cursor-pointer disabled:opacity-50 hover:bg-primary/10 transition-colors`}
-                  disabled={settingStore.searchEngine.name === "DuckDuckgo"}
-                  onClick={() =>
-                    settingStore.setSearchEngine(
-                      "DuckDuckgo",
-                      "https://duckduckgo.com/?q="
-                    )
-                  }
-                >
-                  <img
-                    src="/searchEngines/DuckDuckgo.png"
-                    className="h-8"
-                    alt=""
-                  />
-                  <div>DuckDuckgo</div>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className={`rounded-2xl w-full flex space-x-2 cursor-pointer disabled:opacity-50 hover:bg-primary/10 transition-colors`}
-                  disabled={settingStore.searchEngine.name === "brave"}
-                  onClick={() =>
-                    settingStore.setSearchEngine(
-                      "brave",
-                      "https://search.brave.com/search?q="
-                    )
-                  }
-                >
-                  <img src="/searchEngines/brave.png" className="h-8" alt="" />
-                  <div>Brave</div>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className={`rounded-2xl w-fit flex space-x-2 cursor-pointer disabled:opacity-50 min-w-full hover:bg-primary/10 transition-colors`}
-                  disabled={settingStore.searchEngine.name === "Google"}
-                  onClick={() =>
-                    settingStore.setSearchEngine(
-                      "Google",
-                      "https://www.google.com/search?q="
-                    )
-                  }
-                >
-                  <img src="/searchEngines/Google.png" className="h-8" alt="" />
-                  <div>Google</div>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="rounded-2xl p-2 flex items-center justify-center flex-col w-fit bg-card/80 backdrop-blur-md border-primary/10">
+                    <DropdownMenuItem
+                      className={`rounded-2xl w-fit flex space-x-2 cursor-pointer disabled:opacity-50 hover:bg-primary/10 transition-colors`}
+                      disabled={settingStore.searchEngine.name === "DuckDuckgo"}
+                      onClick={() =>
+                        settingStore.setSearchEngine(
+                          "DuckDuckgo",
+                          "https://duckduckgo.com/?q="
+                        )
+                      }
+                    >
+                      <img
+                        src="/searchEngines/DuckDuckgo.png"
+                        className="h-8"
+                        alt=""
+                      />
+                      <div>DuckDuckgo</div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className={`rounded-2xl w-full flex space-x-2 cursor-pointer disabled:opacity-50 hover:bg-primary/10 transition-colors`}
+                      disabled={settingStore.searchEngine.name === "brave"}
+                      onClick={() =>
+                        settingStore.setSearchEngine(
+                          "brave",
+                          "https://search.brave.com/search?q="
+                        )
+                      }
+                    >
+                      <img src="/searchEngines/brave.png" className="h-8" alt="" />
+                      <div>Brave</div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className={`rounded-2xl w-fit flex space-x-2 cursor-pointer disabled:opacity-50 min-w-full hover:bg-primary/10 transition-colors`}
+                      disabled={settingStore.searchEngine.name === "Google"}
+                      onClick={() =>
+                        settingStore.setSearchEngine(
+                          "Google",
+                          "https://www.google.com/search?q="
+                        )
+                      }
+                    >
+                      <img src="/searchEngines/Google.png" className="h-8" alt="" />
+                      <div>Google</div>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </TiltCard>
           </motion.div>
           <motion.div className="relative w-3/12 h-fit">
             <AnimatePresence mode="wait">
@@ -343,7 +353,7 @@ const DefaultHome = () => {
           className="min-h-[50%] w-[20%] xl:w-[16%] border border-primary/10 sm:flex hidden absolute right-[10rem] justify-center backdrop-blur-md p-4 bg-card/20 rounded-2xl shadow-lg hover:shadow-xl"
         >
           <div className="relative w-full min-h-full flex flex-col items-center justify-center space-y-3">
-            <h2 className="sm:text-xs md:text-sm lg:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+             <h2 className="sm:text-xs md:text-sm lg:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
               Popular sites
             </h2>
             <div className="w-full h-full flex flex-col space-y-2 ">
@@ -366,15 +376,15 @@ const DefaultHome = () => {
                 </motion.div>
               ))}
             </div>
-            <Separator className="my-4 bg-primary/10" />
+            <Separator className="my-4 bg-gradient-to-r from-blue-400/30 via-purple-500/30 to-pink-500/30 h-px" />
             <div className="w-full h-full flex flex-col items-center justify-center space-y-2">
               {sponser !== undefined && (
                 <>
-                  <h2 className="sm:text-xs md:text-sm lg:text-xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-600">
+                  <h2 className="sm:text-xs md:text-sm lg:text-xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
                     🌟 Spotlight 🌟
                   </h2>
                   <motion.div
-                    className="w-full h-full flex items-center justify-center px-4 gap-2 border border-amber-500/20 rounded-2xl select-none cursor-pointer shadow-lg p-3 hover:shadow-2xl bg-gradient-to-br from-amber-500/5 to-transparent"
+                    className="w-full h-full flex items-center justify-center px-4 gap-2 border border-purple-500/20 rounded-2xl select-none cursor-pointer shadow-lg p-3 hover:shadow-2xl bg-gradient-to-br from-blue-400/10 via-purple-500/10 to-pink-500/10"
                     onClick={() => handleSearch(sponser.url)}
                     whileHover={{
                       y: -5,
@@ -393,7 +403,7 @@ const DefaultHome = () => {
                       </h3>
                       <a
                         href={sponser.discord}
-                        className="underline text-amber-500 hover:text-amber-400 transition-colors"
+                        className="underline text-purple-400 hover:text-pink-400 transition-colors"
                       >
                         <p className="text-center sm:text-xs md:text-xs lg:xs">
                           Click here to join their discord!
@@ -498,11 +508,11 @@ const DefaultHome = () => {
           style={{ borderRadius: 15 }}
         >
           <DialogHeader>
-            <DialogTitle className="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+            <DialogTitle className="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
               Settings
             </DialogTitle>
             <DialogDescription className="text-base">
-              Change the look or behavior of Emerald
+            Change the look or behavior of thundr.
             </DialogDescription>
           </DialogHeader>
           <Tabs defaultValue="proxy">

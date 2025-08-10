@@ -47,7 +47,7 @@ const DEFAULT_SETTINGS: SettingValues = {
   allowTabReordering: false,
   cloak: "none",
   siteType: "browser",
-  title: "Emerald ✨",
+  title: "thundr.",
   icon: "/emerald.png",
   searchEngine: {
     name: "Brave",
@@ -82,7 +82,7 @@ const useSettings = create<SettingsStore>()(
       setSiteType: (siteType: "browser" | "default") =>
         set(() => ({ siteType })),
       setCloak: (cloak: "none" | "aboutBlank") => set(() => ({ cloak })),
-      title: "Emerald ✨",
+      title: "thundr.",
       setTitle: (title: string) => set(() => ({ title })),
       icon: "/emerald.png",
       setIcon: (icon: string) => set(() => ({ icon })),

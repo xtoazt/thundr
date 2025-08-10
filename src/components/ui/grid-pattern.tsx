@@ -29,25 +29,19 @@ export function GridPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
-        className,
+        "pointer-events-none absolute inset-0 h-full w-full",
+        className
       )}
       {...props}
     >
       <defs>
-        <pattern
-          id={id}
-          width={width}
-          height={height}
-          patternUnits="userSpaceOnUse"
-          x={x}
-          y={y}
-        >
-          <path
-            d={`M.5 ${height}V.5H${width}`}
-            fill="none"
-            strokeDasharray={strokeDasharray}
-          />
+        <linearGradient id={`${id}-stroke`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.35" />
+          <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#f472b6" stopOpacity="0.35" />
+        </linearGradient>
+        <pattern id={id} width={width} height={height} patternUnits="userSpaceOnUse" x={x} y={y}>
+          <path d={`M.5 ${height}V.5H${width}`} fill="none" stroke={`url(#${id}-stroke)`} strokeDasharray={strokeDasharray} />
         </pattern>
       </defs>
       <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
@@ -61,6 +55,7 @@ export function GridPattern({
               height={height - 1}
               x={x * width + 1}
               y={y * height + 1}
+              fill={`url(#${id})`}
             />
           ))}
         </svg>
