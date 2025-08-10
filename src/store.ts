@@ -39,7 +39,7 @@ interface SettingSetters {
 
 const DEFAULT_SETTINGS: SettingValues = {
   version: "1.0.0",
-  proxy: "scramjet",
+  proxy: "uv",
   transport: {
     path: "/libcurl/index.mjs",
     name: "libcurl",
@@ -65,7 +65,7 @@ const useSettings = create<SettingsStore>()(
     (set) => ({
       version: "1.0.0",
       setVersion: (version: string) => set(() => ({ version })),
-      proxy: "scramjet",
+      proxy: "uv",
       transport: {
         path: "/libcurl/index.mjs",
         name: "libcurl",
