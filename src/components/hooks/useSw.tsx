@@ -43,9 +43,10 @@ const useSw = (path: string, scope: string = "/") => {
         log.info(
           `Setting wisp url to ${settingsStore.wispUrl} and using the transport ${settingsStore.transport.name} (${settingsStore.transport.path})`
         );
+        const wisp = (window as any).__WISP_URL__ || settingsStore.wispUrl;
         connection.setTransport(settingsStore.transport.path, [
           {
-            wisp: settingsStore.wispUrl,
+            wisp,
           },
         ]);
       });

@@ -32,6 +32,10 @@
     </script>
     <script src="/uv/uv.bundle.js"></script>
     <script src="/uv/uv.config.js"></script>
+    <script>
+      // Ensure wisp is available even on serverless
+      window.__WISP_URL__ = (location.protocol.includes('https') ? 'wss://' : 'ws://') + location.host + '/w/';
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
