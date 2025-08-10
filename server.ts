@@ -83,11 +83,19 @@ app.get("/api/search", async (req, res) => {
   }
 });
 
-app.get("/api/sponser", async (req, res) => {
-  if (sponserFile.length > 0) {
-    res.send(sponserFile[Math.floor(Math.random() * sponserFile.length)]);
-  } else {
-    res.send([]);
+app.get("/api/sponser", async (_req, res) => {
+  try {
+    if (sponserFile.length > 0) {
+      return res.send(
+        sponserFile[Math.floor(Math.random() * sponserFile.length)]
+      );
+    }
+    // Explicit JSON response
+    res.header("Content-Type", "application/json");
+    return res.send({ ok: true, data: [] });
+  } catch (e) {
+    res.header("Content-Type", "application/json");
+    return res.status(200).send({ ok: false, error: "NO_SPONSER" });
   }
 });
 

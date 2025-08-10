@@ -378,7 +378,7 @@ const DefaultHome = () => {
             </div>
             <Separator className="my-4 bg-gradient-to-r from-blue-400/30 via-purple-500/30 to-pink-500/30 h-px" />
             <div className="w-full h-full flex flex-col items-center justify-center space-y-2">
-              {sponser !== undefined && (
+              {sponser && (
                 <>
                   <h2 className="sm:text-xs md:text-sm lg:text-xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
                     🌟 Spotlight 🌟

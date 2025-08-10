@@ -36,9 +36,19 @@ type Sponsor = {
   discord: string;
 };
 
-const getSponsor = async (): Promise<Sponsor> => {
-  const res = await fetch("/api/sponser");
-  return res.json();
+const getSponsor = async (): Promise<Sponsor | undefined> => {
+  try {
+    const res = await fetch("/api/sponser");
+    if (!res.ok) return undefined;
+    const contentType = res.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) return undefined;
+    const data = await res.json();
+    // Some deployments may return []
+    if (!data || (Array.isArray(data) && data.length === 0)) return undefined;
+    return data as Sponsor;
+  } catch {
+    return undefined;
+  }
 };
 
 export const Route = createFileRoute("/")({
