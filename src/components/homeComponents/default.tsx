@@ -46,7 +46,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { Button } from "../ui/button";
+// Removed unused Button; using ShineButton instead in this file
 const DefaultHome = () => {
   const settingStore = useSettings();
   const [term, setTerm] = useState("");
@@ -682,8 +682,7 @@ const DefaultHome = () => {
                   </Select>
                 </div>
                 <div className="flex justify-center px-4 py-4">
-                  <Button
-                    className="rounded-2xl bg-primary/80 hover:bg-primary transition-colors shadow-md hover:shadow-lg"
+                  <ShineButton
                     onClick={() => {
                       if (changedTitle) {
                         settingStore.setTitle(changedTitle);
@@ -696,7 +695,7 @@ const DefaultHome = () => {
                     }}
                   >
                     Save
-                  </Button>
+                  </ShineButton>
                 </div>
               </div>
             </TabsContent>
